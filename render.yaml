@@ -1,27 +1,13 @@
 services:
   - type: web
     name: calendarai-backend
-    env: docker
+    runtime: docker
     plan: free
     dockerfilePath: ./Dockerfile
+    dockerContext: .
     envVars:
       - key: PORT
         value: 8080
-      - key: SPRING_DATASOURCE_URL
-        fromDatabase:
-          name: calendarai-db
-          property: connectionString
-      - key: SPRING_DATASOURCE_USERNAME
-        fromDatabase:
-          name: calendarai-db
-          property: user
-      - key: SPRING_DATASOURCE_PASSWORD
-        fromDatabase:
-          name: calendarai-db
-          property: password
-    envVars:
-      - key: PORT
-        value: 10000
       - key: SPRING_DATASOURCE_URL
         fromDatabase:
           name: calendarai-db
