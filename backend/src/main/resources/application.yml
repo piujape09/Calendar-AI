@@ -1,0 +1,14 @@
+server:
+  port: ${PORT:8080}
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/calendarai}
+    username: ${SPRING_DATASOURCE_USERNAME:calendarai}
+    password: ${SPRING_DATASOURCE_PASSWORD:calendarai}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+app:
+  openai:
+    apiKey: ${OPENAI_API_KEY:}

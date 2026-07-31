@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: calendarai-backend
+    env: java
+    plan: free
+    buildCommand: cd backend && mvn -DskipTests package
+    startCommand: cd backend && java -jar target/backend-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: calendarai-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: calendarai-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: calendarai-db
+          property: password
+databases:
+  - name: calendarai-db
+    plan: free
+    postgresMajorVersion: 15
